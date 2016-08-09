@@ -120,6 +120,10 @@ function sendGenericMessage(sender) {
 }
 
 // Spin up the server
-app.listen(app.get('port'), function() {
+var server = app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
+
+exports.closeServer = function(){
+  server.close();
+};
