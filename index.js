@@ -18,6 +18,8 @@ app.use(bodyParser.json())
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
 
+// Setting up our bot
+const wit = bot.getWit();
 
 // Wit.ai bot specific code
 
