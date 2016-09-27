@@ -1,7 +1,8 @@
 var request = require("request");
 var testIndex = require("../index.js")
+const Config = require('../const.js');
 //var base_url = "http://localhost:5000/"
-var base_url = process.env.TEST_BASE_URL
+var base_url = Config.TEST_BASE_URL
 
 describe("API Test", function(){
   describe("GET /", function() {
