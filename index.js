@@ -37,7 +37,7 @@ const findOrCreateSession = (fbid) => {
   });
   if (!sessionId) {
     
-    bot.getProfile(fbid, (err, profile) => {
+    getProfile(fbid, (err, profile) => {
         if (err) throw err
         var text = `Echoed back to ${profile.first_name} ${profile.last_name}`
         sendTextMessage(fbid, text)
