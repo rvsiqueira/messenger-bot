@@ -1,6 +1,7 @@
 var request = require("request");
 var testIndex = require("../index.js")
-var base_url = "http://localhost:5000/"
+//var base_url = "http://localhost:5000/"
+var base_url = process.env.TEST_BASE_URL
 
 describe("API Test", function(){
   describe("GET /", function() {
@@ -28,6 +29,7 @@ describe("API Test", function(){
 
     it("verify error for wrong token ", function(done) {
       request.get(base_url+"webhook/", function(error, response, body) {
+        console.log(base_url+"webhook/");
         expect(body).toBe("Error, wrong token");
         testIndex.closeServer();
         done();
