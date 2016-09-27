@@ -11,7 +11,6 @@ const FB = require('./facebook.js');
 
 const app = express()
 app.set('port', (process.env.PORT || 5000))
-app.listen(app.get('port'));
 
 // Process application/json
 app.use(bodyParser.json())
@@ -19,7 +18,6 @@ app.use(bodyParser.json())
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
 
-console.log("Chat Bot Application running @" + process.env.PORT);
 
 // Wit.ai bot specific code
 
@@ -38,12 +36,14 @@ const findOrCreateSession = (fbid) => {
     }
   });
   if (!sessionId) {
+    
     bot.getProfile(fbid, (err, profile) => {
         if (err) throw err
         var text = `Echoed back to ${profile.first_name} ${profile.last_name}`
         sendTextMessage(fbid, text)
         console.log(text)
-    }) 
+    })
+    
     // No session found for user fbid, let's create a new one
     sessionId = new Date().toISOString();
     sessions[sessionId] = {
@@ -71,6 +71,7 @@ app.get('/webhook/', function (req, res) {
     }
     res.send('Error, wrong token')
 })
+
 
 // The main message handler
 app.post('/webhook', (req, res) => {
@@ -133,7 +134,6 @@ app.post('/webhook', (req, res) => {
 
 
 /*
-
 // The main message handler
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
@@ -156,10 +156,8 @@ app.post('/webhook/', function (req, res) {
     }
     res.sendStatus(200)
 })
-
 */
 
-//const token = "EAADzG6iFhkgBAL9thqdqOpDwusTdRl8fAk6FNLorB2v3aPbv0F6LnRMXqa0rZBCIet7KH2ZBqCEFhvNXscmWHBHghmY0NHzCh9hukddqTzdon1ypdo5xFVOYYUTohf21qSv9iwuni2OJLGPZCOxZC9jNmocnhfDd7WuBSmhdcwZDZD"
 const token = Config.FB_PAGE_ACCESS_TOKEN
 
 function sendTextMessage(sender, text) {
