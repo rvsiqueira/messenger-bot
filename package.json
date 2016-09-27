@@ -1,9 +1,11 @@
 {
   "name": "mdl-latam",
-  "version": "1.0.0",
-  "description": "demo de messenger para mdl",
+  "version": "1.0.1",
+  "description": "Demo de messenger para mdl",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "bot": "node bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,7 +13,12 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "request": "^2.74.0"
+    "request": "^2.74.0",
+    "node-wit": "^3.2.2",
+    "node-uuid": "^1.4.7"
+  },
+  "engines": {
+    "node": "6.2.2"
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5"
