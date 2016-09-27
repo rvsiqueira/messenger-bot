@@ -285,7 +285,7 @@ function sendGenericMessage(sender) {
       uri: `https://graph.facebook.com/v2.6/${id}`,
       qs: {
         fields: 'first_name,last_name,profile_pic,locale,timezone,gender',
-        access_token: this.token
+        access_token: token
       },
       json: true
     }, (err, res, body) => {
