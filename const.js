@@ -14,7 +14,7 @@ if (!FB_VERIFY_TOKEN) {
   FB_VERIFY_TOKEN = "my_voice_is_my_password_verify_me";
 }
 
-var FB_VERIFY_TOKEN = process.env.TEST_BASE_URL;
+var TEST_BASE_URL = process.env.TEST_BASE_URL;
 if (!TEST_BASE_URL) {
   TEST_BASE_URL = "http://localhost:5000/";
 }
