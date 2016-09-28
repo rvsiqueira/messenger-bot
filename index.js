@@ -41,8 +41,11 @@ const findOrCreateSession = (fbid) => {
     
     getProfile(fbid, (err, profile) => {
         console.log("FBID:" + fbid);
+        console.log("Error:" + err);
+        console.log("Profile:" + profile);
+        
         if (err) throw err
-        var text = `Echoed back to ${profile.first_name} ${profile.last_name}`
+        var text = `Oi ${profile.first_name} ${profile.last_name}. Eu vou te ajudar com a sua próxima viagem.\n Qual sua cidade de origem?`
         sendTextMessage(fbid, text)
         console.log(text)
     })
