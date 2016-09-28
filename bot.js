@@ -28,17 +28,17 @@ const actions = {
     console.log(context);
     console.log("merge: " + message);
     // Retrieve the location entity and store it into a context field
-    if (firstEntityValue(entities, 'insurance')) {
-      context.insurance = firstEntityValue(entities, 'insurance'); // store it in context
+    if (firstEntityValue(entities, 'seguro')) {
+      context.insurance = firstEntityValue(entities, 'seguro'); // store it in context
     }
-    if (firstEntityValue(entities, 'name')) {
-      context.name = firstEntityValue(entities, 'name');; // store it in context
+    if (firstEntityValue(entities, 'nome')) {
+      context.name = firstEntityValue(entities, 'nome');; // store it in context
     }
-    if (firstEntityValue(entities, 'age')) {
-      context.age = firstEntityValue(entities, 'age'); // store it in context
+    if (firstEntityValue(entities, 'age_of_person')) {
+      context.age = firstEntityValue(entities, 'age_of_person'); // store it in context
     }
-    if (firstEntityValue(entities, 'carModel')) {
-      context.carModel = firstEntityValue(entities, 'carModel'); // store it in context
+    if (firstEntityValue(entities, 'carroModelo')) {
+      context.carModel = firstEntityValue(entities, 'carroModelo'); // store it in context
     }
     cb(context);
   },
