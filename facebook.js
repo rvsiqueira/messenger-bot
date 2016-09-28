@@ -29,7 +29,7 @@ const fbMessage = (recipientId, msg, cb) => {
         }
     }, function(error, response, body) {
       if (cb) {
-        cb(err || data.error && data.error.message, data);
+        cb(error || body.error && body.error.message, body);
       }
     })
 };
