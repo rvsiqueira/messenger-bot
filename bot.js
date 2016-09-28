@@ -79,7 +79,7 @@ const actions = {
   ['fetch-insurance'](sessionId, context, cb) {
     // Here should go the api call, e.g.:
     // context.forecast = apiCall(context.loc)
-    context.insuranceValue = 'R$2950,00';
+    context.insuranceValue = '2950.00';
     context.done = true;
     cb(context);
   },
