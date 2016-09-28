@@ -75,6 +75,30 @@ const actions = {
     context.forecast = 'sunny';
     cb(context);
   },
+  // fetch-weather bot executes
+  ['getInsurance'](sessionId, context, cb) {
+    // Here should go the api call, e.g.:
+    // context.forecast = apiCall(context.loc)
+    cb(context);
+  },
+  // fetch-weather bot executes
+  ['getName'](sessionId, context, cb) {
+    // Here should go the api call, e.g.:
+    // context.forecast = apiCall(context.loc)
+    cb(context);
+  },
+  // fetch-weather bot executes
+  ['getEmail'](sessionId, context, cb) {
+    // Here should go the api call, e.g.:
+    // context.forecast = apiCall(context.loc)
+    cb(context);
+  },
+  // fetch-weather bot executes
+  ['getAge'](sessionId, context, cb) {
+    // Here should go the api call, e.g.:
+    // context.forecast = apiCall(context.loc)
+    cb(context);
+  },
 };
 
 

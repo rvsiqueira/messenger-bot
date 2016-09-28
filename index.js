@@ -291,15 +291,18 @@ function sendGenericMessage(sender) {
     })
   }
 /*  
-getProfile(100002041928962, (err, profile) => {
-        if (err) throw err
-        var text = `Echoed back to ${profile.first_name} ${profile.last_name}`
-        FB.fbMessage(
-            100002041928962,
-            'Sorry I can only process text messages for now.'
-        );
+
+  getProfile(fbid, (err, profile) => {
+        console.log("FBID:" + fbid);
+        console.log("Error:" + err);
+        console.log("Profile:" + profile);
+        
+        if (err) return;
+        var text = `Oi ${profile.first_name} ${profile.last_name}. Eu vou te ajudar com a sua próxima viagem.\n Qual sua cidade de origem?`
+        sendTextMessage(fbid, text)
         console.log(text)
-})
+    })
+
 */
 
 // Spin up the server
