@@ -8,6 +8,7 @@ if (!WIT_TOKEN) {
 
 // Messenger API parameters
 const FB_PAGE_ACCESS_TOKEN = process.env.FB_PAGE_ACCESS_TOKEN;
+const FB_PAGE_ID = process.env.FB_PAGE_ID;
 
 var FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
 if (!FB_VERIFY_TOKEN) {
@@ -22,6 +23,7 @@ if (!TEST_BASE_URL) {
 module.exports = {
   WIT_TOKEN: WIT_TOKEN,
   FB_PAGE_ACCESS_TOKEN: FB_PAGE_ACCESS_TOKEN,
+  FB_PAGE_ID: FB_PAGE_ID,
   FB_VERIFY_TOKEN: FB_VERIFY_TOKEN,
   TEST_BASE_URL: TEST_BASE_URL,
 };

@@ -79,6 +79,12 @@ app.post('/webhook', (req, res) => {
     // We retrieve the Facebook user ID of the sender
     const sender = messaging.sender.id;
 
+    if (sender == Config.FB_PAGE_ID){
+      // Let's give the wheel back to our bot
+      res.sendStatus(200);
+      return;
+    }
+
     // We retrieve the user's current session, or create one if it doesn't exist
     // This is needed for our bot to figure out the conversation history
     const sessionId = findOrCreateSession(sender);
@@ -117,7 +123,7 @@ app.post('/webhook', (req, res) => {
             // This depends heavily on the business logic of your bot.
             // Example:
             if (context['done']) {
-               sendReceiptMessage(sender); 
+               sendReceiptMessage(sender, context.insuranceValue); 
                delete sessions[sessionId];
             }
 
@@ -275,7 +281,7 @@ function sendGenericMessage(sender) {
 }
 
 
-function sendReceiptMessage(sender) {
+function sendReceiptMessage(sender, total) {
     let messageData = {
         "attachment":{
             "type":"template",
@@ -317,7 +323,7 @@ function sendReceiptMessage(sender) {
                 "subtotal":75.00,
                 "shipping_cost":4.95,
                 "total_tax":6.19,
-                "total_cost":56.14
+                "total_cost":context.insuranceValue
                 },
                 "adjustments":[
                 {
