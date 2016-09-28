@@ -17,9 +17,8 @@ const fbReq = request.defaults({
   },
 });
 
-
 const fbMessage = (recipientId, msg, cb) => {
-    let messageData = { text:text }
+    let messageData = { text:msg }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
