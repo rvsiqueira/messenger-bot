@@ -17,23 +17,29 @@ const fbReq = request.defaults({
   },
 });
 
+
 const fbMessage = (recipientId, msg, cb) => {
-    let messageData = { text:msg }
-    let recipient = {id:recipientId}
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:Config.FB_PAGE_ACCESS_TOKEN},
-        method: 'POST',
-        json: {
-            recipient: recipient,
-            message: messageData,
-        }
-    }, function(error, response, body) {
-      if (cb) {
-        cb(error || body.error && body.error.message, body);
-      }
-    })
+  const opts = {
+    form: {
+      recipient: {
+        id: recipientId,
+      },
+      message: {
+        text: msg,
+      },
+    },
+  };
+
+
+  fbReq(opts, (err, resp, data) => {
+      console.log(err + " " + data.error + " " +  data.error.message+ " " +  data)
+  
+    if (cb) {
+      cb(err || data.error && data.error.message, data);
+    }
+  });
 };
+
 
 // See the Webhook reference
 // https://developers.facebook.com/docs/messenger-platform/webhook-reference
