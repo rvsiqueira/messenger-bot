@@ -19,13 +19,14 @@ const fbReq = request.defaults({
 
 const fbMessage = (recipientId, msg, cb) => {
     let messageData = { text:msg }
+    let recipient = {id:recipientId}
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:Config.FB_PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
-            recipient: {id:recipientId},
-            message: msg,
+            recipient: recipientId,
+            message: messageData,
         }
     }, function(error, response, body) {
       if (cb) {

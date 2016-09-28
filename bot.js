@@ -22,7 +22,7 @@ const actions = {
   say(sessionId, context, message, cb) {
     console.log("say:"+ message);
 
-// Our bot has something to say!
+    // Our bot has something to say!
     // Let's retrieve the Facebook user whose session belongs to from context
     // TODO: need to get Facebook user name
     const recipientId = context._fbid_;
