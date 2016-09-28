@@ -40,6 +40,7 @@ const findOrCreateSession = (fbid) => {
   if (!sessionId) {
     
     getProfile(fbid, (err, profile) => {
+        console.log("FBID:" + fbid);
         if (err) throw err
         var text = `Echoed back to ${profile.first_name} ${profile.last_name}`
         sendTextMessage(fbid, text)
