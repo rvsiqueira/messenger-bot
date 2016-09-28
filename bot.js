@@ -20,10 +20,13 @@ const firstEntityValue = (entities, entity) => {
 // Bot actions
 const actions = {
   say(sessionId, context, message, cb) {
-        console.log(message);
+        console.log("say:"+ message);
         cb();
   },
   merge(sessionId, context, entities, message, cb) {
+    console.log(entities);
+    console.log(context);
+    console.log("merge: " + message);
     // Retrieve the location entity and store it into a context field
     if (firstEntityValue(entities, 'insurance')) {
       context.insurance = firstEntityValue(entities, 'insurance'); // store it in context
