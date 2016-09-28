@@ -287,7 +287,6 @@ function sendGenericMessage(sender) {
     
     if (!cb) cb = Function.prototype
      request({
-      //method: 'https://graph.facebook.com/v2.6/${id}',
       uri: 'https://graph.facebook.com/v2.6/'+id,
       qs: {
         fields: 'first_name,last_name,locale,timezone,gender',
@@ -295,9 +294,9 @@ function sendGenericMessage(sender) {
       },
       json: true
     }, (err, res, body) => {
+      console.log(body)
       if (err) return cb(err)
       if (body.error) return cb(body.error)
-      console.log(body)
       cb(null, body)
 
     })
