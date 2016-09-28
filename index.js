@@ -110,6 +110,9 @@ app.post('/webhook', (req, res) => {
             // Now it's waiting for further messages to proceed.
             console.log('Waiting for futher messages.');
 
+            // Updating the user's current session state
+            sessions[sessionId].context = context;
+
             // Based on the session state, you might want to reset the session.
             // This depends heavily on the business logic of your bot.
             // Example:
@@ -117,8 +120,6 @@ app.post('/webhook', (req, res) => {
                delete sessions[sessionId];
             }
 
-            // Updating the user's current session state
-            sessions[sessionId].context = context;
           }
         }
       );
