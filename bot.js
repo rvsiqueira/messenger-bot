@@ -20,8 +20,33 @@ const firstEntityValue = (entities, entity) => {
 // Bot actions
 const actions = {
   say(sessionId, context, message, cb) {
-        console.log("say:"+ message);
+    console.log("say:"+ message);
+
+// Our bot has something to say!
+    // Let's retrieve the Facebook user whose session belongs to from context
+    // TODO: need to get Facebook user name
+    const recipientId = context._fbid_;
+    if (recipientId) {
+      // Yay, we found our recipient!
+      // Let's forward our bot response to her.
+      FB.fbMessage(recipientId, message, (err, data) => {
+        if (err) {
+          console.log(
+            'Oops! An error occurred while forwarding the response to',
+            recipientId,
+            ':',
+            err
+          );
+        }
+
+        // Let's give the wheel back to our bot
         cb();
+      });
+    } else {
+      console.log('Oops! Couldn\'t find user in context:', context);
+      // Giving the wheel back to our bot
+      cb();
+    }
   },
   merge(sessionId, context, entities, message, cb) {
     console.log(entities);
@@ -52,6 +77,7 @@ const actions = {
     // Here should go the api call, e.g.:
     // context.forecast = apiCall(context.loc)
     context.insuranceValue = 'R$100';
+    context.done = true;
     cb(context);
   },
 };
