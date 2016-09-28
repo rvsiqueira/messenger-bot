@@ -39,17 +39,6 @@ const findOrCreateSession = (fbid) => {
   });
   if (!sessionId) {
     
-    getProfile(fbid, (err, profile) => {
-        console.log("FBID:" + fbid);
-        console.log("Error:" + err);
-        console.log("Profile:" + profile);
-        
-        if (err) throw err
-        var text = `Oi ${profile.first_name} ${profile.last_name}. Eu vou te ajudar com a sua próxima viagem.\n Qual sua cidade de origem?`
-        sendTextMessage(fbid, text)
-        console.log(text)
-    })
-    
     // No session found for user fbid, let's create a new one
     sessionId = new Date().toISOString();
     sessions[sessionId] = {
