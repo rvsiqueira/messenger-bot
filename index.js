@@ -280,24 +280,35 @@ function sendGenericMessage(sender) {
 }
 
  function getProfile (id, cb) {
+    
     if (!cb) cb = Function.prototype
-
-    request({
-      method: 'GET',
-      uri: `https://graph.facebook.com/v2.6/${id}`,
+     request({
+      //method: 'https://graph.facebook.com/v2.6/${id}',
+      uri: 'https://graph.facebook.com/v2.6/'+id,
       qs: {
-        fields: 'first_name,last_name,profile_pic,locale,timezone,gender',
+        fields: 'first_name,last_name,locale,timezone,gender',
         access_token: token
       },
       json: true
     }, (err, res, body) => {
       if (err) return cb(err)
       if (body.error) return cb(body.error)
-
+      console.log(body)
       cb(null, body)
+
     })
   }
-
+/*  
+getProfile(100002041928962, (err, profile) => {
+        if (err) throw err
+        var text = `Echoed back to ${profile.first_name} ${profile.last_name}`
+        FB.fbMessage(
+            100002041928962,
+            'Sorry I can only process text messages for now.'
+        );
+        console.log(text)
+})
+*/
 
 // Spin up the server
 var server = app.listen(app.get('port'), function() {
