@@ -289,7 +289,7 @@ function sendReceiptMessage(sender, total) {
                 "template_type":"receipt",
                 "recipient_name":"Stephane Crozatier",
                 "order_number":"12345678902",
-                "currency":"R$",
+                "currency":"USD",
                 "payment_method":"Visa 2345",        
                 "order_url":"http://petersapparel.parseapp.com/order?order_id=123456",
                 "timestamp":"1428444852", 
@@ -299,8 +299,8 @@ function sendReceiptMessage(sender, total) {
                     "subtitle":"Santa Fe",
                     "quantity":1,
                     "price":total,
-                    "currency":"R$",
-                    "image_url":"http://petersapparel.parseapp.com/img/whiteshirt.png"
+                    "currency":"USD",
+                    "image_url":"http://edmarscarshop.weebly.com/uploads/4/7/2/1/47210243/s839229361958944689_p5_i3_w1100.jpeg"
                 },
                 ],
                 "summary":{
