@@ -25,7 +25,7 @@ const fbMessage = (recipientId, msg, cb) => {
         qs: {access_token:Config.FB_PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
-            recipient: recipientId,
+            recipient: recipient,
             message: messageData,
         }
     }, function(error, response, body) {
