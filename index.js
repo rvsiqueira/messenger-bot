@@ -123,7 +123,7 @@ app.post('/webhook', (req, res) => {
             // This depends heavily on the business logic of your bot.
             // Example:
             if (context['done']) {
-               sendReceiptMessage(sender, context.insuranceValue); 
+               sendReceiptMessage(sender, context.insuranceValue, context.carModel); 
                delete sessions[sessionId];
             }
 
@@ -281,7 +281,7 @@ function sendGenericMessage(sender) {
 }
 
 
-function sendReceiptMessage(sender, total) {
+function sendReceiptMessage(sender, total, carModel) {
     let messageData = {
         "attachment":{
             "type":"template",
@@ -296,7 +296,7 @@ function sendReceiptMessage(sender, total) {
                 "elements":[
                 {
                     "title":"Seguro Auto",
-                    "subtitle":"Santa Fe",
+                    "subtitle": carModel,
                     "quantity":1,
                     "price":total,
                     "currency":"USD",
@@ -339,7 +339,45 @@ function sendReceiptMessage(sender, total) {
     })
 }
 
-
+function sendBuyMessage(sender, total) {
+    let messageData = {
+        "attachment":{
+            "type":"template",
+            "payload":{
+                "template_type":"generic",
+                "elements":[
+                {
+                    "title":"Santa Fe",
+                    "image_url":"http://edmarscarshop.weebly.com/uploads/4/7/2/1/47210243/s839229361958944689_p5_i3_w1100.jpeg",
+                    "subtitle":"Seguro Auto",
+                    "buttons":[
+                    {
+                        "type":"postback",
+                        "title":"Pagar",
+                        "payload":"Finalizar Pagamento"
+                    }
+                    ]
+                }
+                ]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
 
 
  function getProfile (id, cb) {
