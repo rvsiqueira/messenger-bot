@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="API Test" errors="0" tests="0" failures="0" time="0" timestamp="2016-09-27T16:59:15">
+</testsuite>
+<testsuite name="API Test.GET /" errors="0" tests="2" failures="0" time="0.055" timestamp="2016-09-27T16:59:15">
+  <testcase classname="API Test.GET /" name="returns status code 200" time="0.039"></testcase>
+  <testcase classname="API Test.GET /" name="returns Hello World" time="0.015"></testcase>
+</testsuite>
+<testsuite name="API Test.GET /webhook/" errors="0" tests="2" failures="0" time="0.028" timestamp="2016-09-27T16:59:15">
+  <testcase classname="API Test.GET /webhook/" name="returns status code 200" time="0.013"></testcase>
+  <testcase classname="API Test.GET /webhook/" name="verify error for wrong token " time="0.015"></testcase>
+</testsuite>
+</testsuites>
