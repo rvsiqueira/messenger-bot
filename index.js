@@ -96,7 +96,7 @@ function sendGenericMessage(sender) {
                     "buttons": [{
                         "type": "postback",
                         "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
+                        "payload": "Payload for second element in a generic  bubble",
                     }],
                 }]
             }
